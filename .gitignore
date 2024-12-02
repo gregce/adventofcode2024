@@ -1,8 +1,37 @@
+# Environment files
 .env
-__pycache__/
-*.pyc
-.pytest_cache/
+.env.*
 .env.docker
-secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Poetry
+poetry.lock
+.poetry/
+.venv/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets
 *.pem
-*.key 
+*.key
+secrets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Temporary files
+tmp/
+*.tmp 
