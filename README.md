@@ -1,7 +1,5 @@
 # AoC 2024 Solution Generator 🎄
 
-<iframe style="border:0;" width="800" height="450" src="https://www.tella.tv/video/cm46cnm54002103mm1ww27b9u/embed?b=1&title=1&a=1&loop=0&t=0&muted=0&wt=1" allowfullscreen allowtransparency></iframe>
-
 An AI-powered web application that generates and runs solutions for Advent of Code problems using OpenAI's GPT models. This app helps automate the process of solving Advent of Code challenges by generating specifications and implementing solutions using AI.
 
 ## Features 🌟
