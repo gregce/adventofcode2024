@@ -1,5 +1,7 @@
 # AoC 2024 Solution Generator 🎄
 
+https://github.com/user-attachments/assets/eabd0cbc-8434-47ac-b45c-af12f2920fba
+
 An AI-powered web application that generates and runs solutions for Advent of Code problems using OpenAI's GPT models. This app helps automate the process of solving Advent of Code challenges by generating specifications and implementing solutions using AI.
 
 ## Features 🌟
