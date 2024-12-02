@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "${PORT:-5001}:5001"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=run.py
+      - HOST=0.0.0.0
+      - FLASK_PORT=5001
+      - POETRY_HOME=/app/.poetry
+      - POETRY_CACHE_DIR=/app/.cache
+    tmpfs:
+      - /tmp:exec,mode=777
+      - /app/.poetry:mode=777
+      - /app/.cache:mode=777
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    deploy:
+      replicas: 1
+      update_config:
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G

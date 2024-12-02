@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-[#00cc00] text-4xl font-bold">AoC 2024 Solution Generator</h1>
+    <button onclick="resetApp()" 
+            class="px-3 py-1 bg-red-900 hover:bg-red-800 text-white rounded text-sm font-semibold transition-colors">
+        Reset
+    </button>
+</div>
+
+{% if not has_api_key %}
+<div class="mb-8 p-4 bg-yellow-900/50 rounded-lg">
+    <h2 class="text-[#00cc00] text-xl mb-4">OpenAI API Key Required</h2>
+    <form id="apiKeyForm" onsubmit="submitApiKey(event)" class="space-y-4">
+        <div>
+            <label class="block text-[#00cc00] mb-2">Enter your OpenAI API Key</label>
+            <input 
+                type="password" 
+                name="api_key" 
+                class="w-full px-3 py-2 advent-input rounded"
+                required
+                placeholder="sk-..."
+            >
+        </div>
+        <button type="submit" class="w-full py-2 px-4 advent-button rounded text-sm font-semibold">
+            Set API Key
+        </button>
+    </form>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 {% if not has_api_key %}opacity-50 pointer-events-none{% endif %}">
+    <div>
+        <form onsubmit="submitForm(event)" class="space-y-6">
+            <div>
+                <label class="block text-[#00cc00] mb-2">Model</label>
+                <select 
+                    name="model" 
+                    class="w-full px-3 py-2 advent-input rounded"
+                    required
+                >
+                    {% for model_id, model_name in models.items() %}
+                        <option value="{{ model_id }}">{{ model_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block text-[#00cc00] mb-2">Instructions</label>
+                <textarea 
+                    name="instructions" 
+                    rows="4" 
+                    class="w-full px-3 py-2 advent-input rounded"
+                    required
+                    placeholder="Enter your instructions here..."
+                ></textarea>
+            </div>
+            <div>
+                <label class="block text-[#00cc00] mb-2">Input File (optional)</label>
+                <div class="mt-1 p-4 advent-input rounded text-center">
+                    <input type="file" name="file" class="text-sm">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="w-full py-2 px-4 advent-button rounded text-sm font-semibold">
+                    Generate Solution
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="space-y-6">
+        <div>
+            <h2 class="text-[#00cc00] text-xl mb-2">Status Log</h2>
+            <div id="status" class="status-window p-4 font-mono text-sm">
+            </div>
+        </div>
+        
+        <div id="result-container">
+            <!-- Results will be loaded here -->
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} - AoC 2024 Solution Generator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body class="min-h-screen p-8">
+        <div class="max-w-7xl mx-auto">
+            {% block content %}{% endblock %}
+        </div>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html> 

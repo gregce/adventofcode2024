@@ -1,0 +1,56 @@
+<div>
+    <!-- Tab buttons -->
+    <div class="flex space-x-2 mb-4">
+        <button onclick="switchTab('spec')" class="tab-button bg-[#00cc00] text-black px-4 py-2 rounded">
+            Specification
+        </button>
+        <button onclick="switchTab('solution')" class="tab-button text-[#00cc00] px-4 py-2 rounded">
+            Solution
+        </button>
+        <button onclick="switchTab('result')" class="tab-button text-[#00cc00] px-4 py-2 rounded">
+            Result
+        </button>
+    </div>
+
+    <div id="spec-tab" class="tab-content">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-[#00cc00] text-xl">Specification</h2>
+            <button onclick="downloadFile(`{{ spec }}`, 'specification.md', 'text/markdown')" 
+                    class="px-3 py-1 advent-button rounded text-sm">
+                Download .md
+            </button>
+        </div>
+        <pre class="p-4 rounded overflow-x-auto text-sm advent-input">{{ spec }}</pre>
+    </div>
+    
+    <div id="solution-tab" class="tab-content">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-[#00cc00] text-xl">Solution</h2>
+            <button onclick="downloadFile(`{{ solution }}`, 'solution.py', 'text/python')" 
+                    class="px-3 py-1 advent-button rounded text-sm">
+                Download .py
+            </button>
+        </div>
+        <pre class="p-4 rounded overflow-x-auto text-sm advent-input">{{ solution }}</pre>
+    </div>
+    
+    <div id="result-tab" class="tab-content">
+        <h2 class="text-[#00cc00] text-xl mb-2">Result</h2>
+        <div class="p-4 advent-input rounded space-y-2">
+            <div>
+                <h3 class="text-[#00cc00]">Output:</h3>
+                <pre class="text-sm">{{ result.stdout }}</pre>
+            </div>
+            {% if result.stderr %}
+            <div class="text-red-400">
+                <h3 class="font-semibold">Error:</h3>
+                <pre class="text-sm">{{ result.stderr }}</pre>
+            </div>
+            {% endif %}
+            <div>
+                <h3 class="text-[#00cc00]">Exit Code:</h3>
+                <pre class="text-sm">{{ result.exit_code }}</pre>
+            </div>
+        </div>
+    </div>
+</div> 

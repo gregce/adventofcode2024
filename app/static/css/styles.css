@@ -1,0 +1,51 @@
+body { 
+    background: #0f0f23;
+    color: #cccccc;
+    font-family: 'Source Code Pro', monospace;
+}
+.advent-input {
+    background: #10101a;
+    border: 1px solid #333340;
+    color: #cccccc;
+}
+.advent-input:focus {
+    border-color: #666680;
+    outline: none;
+}
+.advent-button {
+    background: #0f0f23;
+    border: 1px solid #00cc00;
+    color: #00cc00;
+    transition: all 0.2s;
+}
+.advent-button:hover:not(:disabled) {
+    background: #00cc00;
+    color: #ffffff;
+}
+.advent-button:disabled {
+    border-color: #333340;
+    color: #333340;
+    cursor: not-allowed;
+}
+pre {
+    background: #10101a;
+    border: 1px solid #333340;
+}
+.status-window {
+    background: #10101a;
+    border: 1px solid #333340;
+    height: 200px;
+    overflow-y: auto;
+}
+.tab-button {
+    transition: all 0.2s;
+}
+.tab-button:hover {
+    opacity: 0.9;
+}
+.tab-content {
+    display: none;
+}
+#spec-tab {
+    display: block;
+} 
