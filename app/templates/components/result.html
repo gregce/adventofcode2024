@@ -15,10 +15,11 @@
     <div id="spec-tab" class="tab-content">
         <div class="flex justify-between items-center mb-2">
             <h2 class="text-[#00cc00] text-xl">Specification</h2>
-            <button onclick="downloadFile(`{{ spec }}`, 'specification.md', 'text/markdown')" 
+            <button onclick="downloadText(this.nextElementSibling.textContent, 'specification.md', 'text/markdown')" 
                     class="px-3 py-1 advent-button rounded text-sm">
                 Download .md
             </button>
+            <pre style="display: none;">{{ spec }}</pre>
         </div>
         <pre class="p-4 rounded overflow-x-auto text-sm advent-input">{{ spec }}</pre>
     </div>
@@ -26,10 +27,11 @@
     <div id="solution-tab" class="tab-content">
         <div class="flex justify-between items-center mb-2">
             <h2 class="text-[#00cc00] text-xl">Solution</h2>
-            <button onclick="downloadFile(`{{ solution }}`, 'solution.py', 'text/python')" 
+            <button onclick="downloadText(this.nextElementSibling.textContent, 'solution.py', 'text/python')" 
                     class="px-3 py-1 advent-button rounded text-sm">
                 Download .py
             </button>
+            <pre style="display: none;">{{ solution }}</pre>
         </div>
         <pre class="p-4 rounded overflow-x-auto text-sm advent-input">{{ solution }}</pre>
     </div>
@@ -53,4 +55,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>

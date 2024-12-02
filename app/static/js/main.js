@@ -127,16 +127,39 @@ function showTab(type) {
     }
 }
 
-function downloadFile(content, filename, type) {
-    const blob = new Blob([content], { type: type });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
+function downloadText(content, filename, type) {
+    // Create the blob with proper MIME type
+    const mimeTypes = {
+        'text/python': 'text/plain',  // Python files are plain text
+        'text/markdown': 'text/markdown',
+        'text/plain': 'text/plain'
+    };
+
+    try {
+        const blob = new Blob([content], { 
+            type: mimeTypes[type] || 'text/plain'
+        });
+
+        // Create download link
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = filename;
+
+        // Add to document, click, and cleanup
+        document.body.appendChild(a);
+        a.click();
+        
+        // Small timeout to ensure download starts
+        setTimeout(() => {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 100);
+    } catch (error) {
+        console.error('Download error:', error);
+        console.log('Content:', content);
+    }
 }
 
 function resetApp() {
